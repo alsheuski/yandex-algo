@@ -12,7 +12,7 @@ function executeSolution() {
   );
 }
 
-describe("G. Anagrams", () => {
+describe("H. Palindrome", () => {
   const inputFile = path.join(__dirname, "input.txt");
   const outputFile = path.join(__dirname, "output.txt");
 
@@ -26,8 +26,8 @@ describe("G. Anagrams", () => {
     fsMock.restore();
   });
 
-  it("'привет/пока' should return 'False'", async () => {
-    const input = "привет\nпока";
+  it("'hello' should return 'False'", async () => {
+    const input = "hello";
     const expected = "False";
 
     fsMock.expects("readFileSync").withArgs(inputFile, "utf-8").returns(input);
@@ -36,8 +36,8 @@ describe("G. Anagrams", () => {
     executeSolution();
   });
 
-  it("'мошкара/ромашка' should return 'True'", async () => {
-    const input = "мошкара\nромашка";
+  it("'A man, a plan, a canal: Panama' should return 'True'", async () => {
+    const input = "A man, a plan, a canal: Panama";
     const expected = "True";
 
     fsMock.expects("readFileSync").withArgs(inputFile, "utf-8").returns(input);
@@ -46,8 +46,8 @@ describe("G. Anagrams", () => {
     executeSolution();
   });
 
-  it("'кошка/лошка' should return 'False'", async () => {
-    const input = "кошка\nлошка";
+  it("'zo' should return 'False'", async () => {
+    const input = "zo";
     const expected = "False";
 
     fsMock.expects("readFileSync").withArgs(inputFile, "utf-8").returns(input);
