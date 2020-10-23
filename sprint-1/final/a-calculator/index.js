@@ -1,4 +1,4 @@
-// run id 36840778
+// run id 37278665
 const fs = require("fs");
 const path = require("path");
 const inputFilePath = path.join(__dirname, "input.txt");
@@ -36,6 +36,23 @@ class Stack {
   }
 }
 
+function calculate(a, operator, b) {
+  switch (operator) {
+    case "+": {
+      return a + b;
+    }
+    case "-": {
+      return a - b;
+    }
+    case "*": {
+      return a * b;
+    }
+    case "/": {
+      return Math.floor(a / b);
+    }
+  }
+}
+
 function solution() {
   const stack = new Stack();
 
@@ -49,7 +66,7 @@ function solution() {
         const b = stack.pop();
         const a = stack.pop();
 
-        stack.push(Math.floor(eval(a + char + b)));
+        stack.push(calculate(+a, char, +b));
       } else {
         return -1;
       }

@@ -1,9 +1,9 @@
-// run id 36870850
+// run id 37283616
 const fs = require("fs");
 const path = require("path");
 const inputFilePath = path.join(__dirname, "input.txt");
 const outputFilePath = path.join(__dirname, "output.txt");
-let fileLines = fs.readFileSync(inputFilePath, "utf-8").split(/\r?\n/);
+const fileLines = fs.readFileSync(inputFilePath, "utf-8").split(/\r?\n/);
 const commandsCount = +fileLines[0];
 
 class Stack {
@@ -66,7 +66,9 @@ function solution() {
   const queue = new Queue();
 
   for (let i = 1; i <= commandsCount; i++) {
-    switch (fileLines[i]) {
+    const operand = fileLines[i].split(" ");
+
+    switch (operand[0]) {
       case "get_size": {
         res.push(queue.getSize());
         break;
@@ -75,10 +77,10 @@ function solution() {
         res.push(queue.get());
         break;
       }
-      default:
-        const num = fileLines[i].split(" ")[1];
-        queue.put(num);
+      case "put": {
+        queue.put(operand[1]);
         break;
+      }
     }
   }
 
